@@ -1,3 +1,5 @@
+import React from 'react'
+
 import formatDate from '../utils/format-date'
 
 const Message = ({ body }) =>

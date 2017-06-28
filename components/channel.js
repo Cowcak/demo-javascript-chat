@@ -1,3 +1,5 @@
+import React from 'react'
+
 const ChannelItem = ({ name, lastMessage, onClick, active }) =>
   <li>
     <button onClick={onClick} className={active && 'active'}>

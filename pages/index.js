@@ -43,13 +43,15 @@ export default class Index extends Component {
   }
 
   handleChannelClick = channel => {
+    this.setState({ channel })
+
     if (this.messages) {
       this.messages.unsubscribe()
     }
 
     this.messages = subscribeMessages(
       channel,
-      messages => this.setState({ messages, loading: false, channel }),
+      messages => this.setState({ messages, loading: false }),
       err => console.error(err)
     )
   }
@@ -128,18 +130,3 @@ export default class Index extends Component {
     )
   }
 }
-
-const channels = [
-  {
-    id: 'general',
-    body: {}
-  },
-  {
-    id: 'random',
-    body: {}
-  },
-  {
-    id: 'social',
-    body: {}
-  }
-]

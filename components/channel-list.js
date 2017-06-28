@@ -1,3 +1,5 @@
+import React from 'react'
+
 import Channel from './channel'
 
 const ChannelList = ({ channels, activeChannel, onClick }) =>

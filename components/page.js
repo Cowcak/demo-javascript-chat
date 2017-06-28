@@ -25,3 +25,5 @@ const Page = ({ heading, children }) =>
       `}
     </style>
   </div>
+
+export default Page

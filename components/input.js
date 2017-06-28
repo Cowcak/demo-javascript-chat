@@ -1,3 +1,5 @@
+import React from 'react'
+
 const Input = ({ placeholder, value, onChange, onPress, name, margin = 0 }) =>
   <div>
     <input
