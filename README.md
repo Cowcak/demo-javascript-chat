@@ -8,7 +8,7 @@
 # Chat - Example Web App in Next.js
 
 <p align="center">
-  <img alt="App Screenshot" src="/static/app-screenshot.png" />
+  <img alt="App Screenshot" src="./static/app-screenshot.png" />
 </p>
 
 ## How to use
@@ -44,7 +44,7 @@ In the dashboard, you can observe `channels` collection, that contains documents
 You can also look for `messages` collection and see all documents describing your messages.
 
 <p align="center">
-  <img alt="Dashboard - Messages" src="./static/dashboard-channels.png" />
+  <img alt="Dashboard - Messages" src="./static/dashboard-messages.png" />
 </p>
 
 
