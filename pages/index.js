@@ -79,7 +79,7 @@ export default class Index extends Component {
     createChannel(name, cb)
   }
 
-  sendMessage() {
+  async sendMessage() {
     const { channel, text } = this.state
     if (text === '') {
       return
