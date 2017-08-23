@@ -125,7 +125,8 @@ export default class Index extends Component {
               flex: 1;
               max-width: 400px;
               border-right: 1px solid #EEEBF3;
-              padding: 0 0 0 80px;                            
+              padding: 0 0 0 80px;
+              overflow: auto;                     
             }
             @media screen and (min-width: 800px) {
               aside {

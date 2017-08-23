@@ -97,7 +97,7 @@ class AddChannel extends Component {
               color: #cf4647;
               font-size: 1.5rem;
               padding: 10px 0;
-              margin: 10px 0 0;
+              margin: 10px 0 20px;
               cursor: pointer;
               transition: .15s ease;
             }
