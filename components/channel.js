@@ -7,6 +7,13 @@ const ChannelItem = ({ name, lastMessage, onClick, active }) =>
         <span className="dash">#</span>
         {name}
       </span>
+      {lastMessage.text
+        ? <span className="last-message">
+            <i>Last message:</i> {lastMessage.text}
+          </span>
+        : <span className="last-message">
+            <i>No messages yet</i>
+          </span>}
     </button>
     <style jsx>
       {`
@@ -25,16 +32,26 @@ const ChannelItem = ({ name, lastMessage, onClick, active }) =>
           text-align: left;
         }
         button:hover {
-          color: #CF4647;
+          color: #cf4647;
         }
         button.active {
-          color: #CF4647;
+          color: #cf4647;
         }
         .dash {
           margin-right: 15px;
         }
+        .last-message {
+          font-size: 1.2rem;
+          margin-top: 4px;
+          padding: 0 27px;
+          color: #404040;
+          -webkit-line-clamp: 2;
+          -webkit-box-orient: vertical;
+          text-overflow: ellipsis;
+          display: -webkit-box;
+          overflow: hidden;
+        }
       `}
-
     </style>
   </li>
 
