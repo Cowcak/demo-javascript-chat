@@ -86,7 +86,7 @@ export default class Index extends Component {
     }
     try {
       this.setState({ text: '' })
-      sendMessage(channel, text)
+      await sendMessage(channel, text)
     } catch (err) {
       console.log('message not sent', err)
     }
