@@ -7,7 +7,7 @@ const desc =
 export default () =>
   <div>
     <Head>
-      <title>RapiDO - Demo App of Rapid.io</title>
+      <title>Chat Demo App - rapid.io</title>
       <meta name="description" content={desc} />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <meta charSet="utf-8" />
