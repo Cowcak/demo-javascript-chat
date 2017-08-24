@@ -2,11 +2,13 @@ import React, { Component } from 'react'
 
 import Meta from './meta'
 import Header from './header'
+import Hamburger from './hamburger'
 
-const Page = ({ heading, children }) =>
+const Page = ({ heading, children, onMenuClick, isMenuOpen }) =>
   <div className="page">
     <Meta />
     <Header heading={heading} />
+    <Hamburger onClick={onMenuClick} isActive={isMenuOpen} />
     {children}
     <style jsx>
       {`

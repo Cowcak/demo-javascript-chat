@@ -45,9 +45,15 @@ export default class MessageList extends Component {
           {`
             div {
               flex: 1;
-              padding: 20px 60px;
+              padding: 20px 30px;
               overflow-y: scroll;
               position: relative;
+            }
+
+            @media screen and (min-width: 800px) {
+              div {
+                padding: 20px 60px;
+              }
             }
           `}
         </style>
