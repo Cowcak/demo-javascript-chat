@@ -4,7 +4,8 @@
   "scripts": {
     "dev": "next",
     "build": "next build",
-    "start": "next start"
+    "start": "next start -p $PORT",
+    "prestart": "next build"
   },
   "engines": {
     "node": "8.1.0"
