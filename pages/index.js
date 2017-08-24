@@ -22,7 +22,7 @@ export default class Index extends Component {
       channel: 'general',
       channels: [],
       messages: [],
-      text: ''
+      text: '',
     }
   }
 
@@ -77,7 +77,10 @@ export default class Index extends Component {
       return
     }
 
-    createChannel(name, cb)
+    createChannel(name, () => {
+      cb()
+      this.handleChannelClick(name)
+    })
   }
 
   async sendMessage() {
