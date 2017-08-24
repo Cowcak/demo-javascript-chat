@@ -31,7 +31,8 @@ export default class Index extends Component {
   }
 
   componentDidMount() {
-    const apiKey = localStorage.getItem('apiKey')
+    const { query } = this.props.url
+    const apiKey = localStorage.getItem('apiKey') || query.apiKey
 
     if (apiKey) {
       this.initRapidClient(apiKey)
