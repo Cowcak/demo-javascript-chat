@@ -45,13 +45,17 @@ class AddChannel extends Component {
           </form>}
         <style jsx>
           {`
+            div {
+              margin: 0 50px 0 0;
+              padding: 30px 0 50px;
+            }
+
             .toggler {
               position: relative;
               width: 100%;
               background: none;
               border: none;
-              padding: 5px 0;
-              margin: 30px 0 15px;
+              padding: 5px 0 20px;
               font-size: 1.6rem;
               font-weight: 400;
               text-align: left;
@@ -77,7 +81,12 @@ class AddChannel extends Component {
             }
 
             form {
-              width: 90%;
+              width: 100%;
+            }
+
+            input, .submit {
+              font-family: 'Poppins', sans-serif;
+              padding: 14px 14px;
             }
 
             input {
@@ -86,7 +95,7 @@ class AddChannel extends Component {
               font-size: 1.6rem;
               display: block;
               width: 100%;
-              padding: 10px 14px;
+              -webkit-appearance: none;
             }
 
             .submit {
@@ -95,8 +104,7 @@ class AddChannel extends Component {
               border: 1px solid #cf4647;
               border-radius: 4px;
               color: #cf4647;
-              font-size: 1.5rem;
-              padding: 10px 0;
+              font-size: 1.6rem;
               margin: 10px 0 20px;
               cursor: pointer;
               transition: .15s ease;

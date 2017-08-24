@@ -15,7 +15,10 @@ const Page = ({ heading, children, onMenuClick, isMenuOpen }) =>
         .page {
           display: flex;
           flex-direction: column;
-          height: 100vh;
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          width: 100%;
           overflow: hidden;
         }
         .scrollable {
