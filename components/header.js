@@ -5,32 +5,34 @@ export default ({ heading }) =>
   <header>
     <div className="link">
       <NextLink href="/">
-        <a className="logo">
-          Rapid.io chat
-        </a>
+        <a className="logo">Rapid.io chat</a>
       </NextLink>
     </div>
     <div className="heading">
-      <h1>{heading}</h1>
+      <h1>
+        {heading}
+      </h1>
     </div>
     <style jsx>
       {`
         header {
           height: 80px;
           display: flex;
-          border-bottom: 1px solid #EEEBF3;
+          border-bottom: 1px solid #eeebf3;
         }
         .link {
-          flex: 1;
-          max-width: 400px;
-          border-right: 1px solid #EEEBF3;
-          height: 100%;
-          display: flex;
-          align-items: center;
-          padding-left: 80px;
+          display: none;
         }
+
         @media screen and (min-width: 800px) {
           .link {
+            flex: 1;
+            max-width: 400px;
+            border-right: 1px solid #eeebf3;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            padding-left: 80px;
             padding: 0 0 0 130px;
           }
         }
@@ -49,7 +51,12 @@ export default ({ heading }) =>
           margin: 0;
           font-size: 2.4rem;
           font-weight: 600;
-          margin-left: 60px;
+          margin-left: 30px;
+        }
+        @media screen and (min-width: 800px) {
+          h1 {
+            margin-left: 60px;
+          }
         }
       `}
     </style>

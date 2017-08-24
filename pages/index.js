@@ -23,6 +23,7 @@ export default class Index extends Component {
       channels: [],
       messages: [],
       text: '',
+      isMenuOpen: false,
     }
   }
 
@@ -46,6 +47,8 @@ export default class Index extends Component {
 
   handleChannelClick = channel => {
     this.setState({ channel })
+
+    this.state.isMenuOpen && this.toggleMobileMenu()
 
     if (this.messages) {
       this.messages.unsubscribe()
@@ -96,12 +99,25 @@ export default class Index extends Component {
     }
   }
 
+  toggleMobileMenu = () => this.setState({ isMenuOpen: !this.state.isMenuOpen })
+
   render() {
-    const { channels, channel, messages, text, loading } = this.state
+    const {
+      channels,
+      channel,
+      messages,
+      text,
+      loading,
+      isMenuOpen,
+    } = this.state
     return (
-      <Page heading={`# ${channel}`}>
+      <Page
+        heading={`# ${channel}`}
+        onMenuClick={this.toggleMobileMenu}
+        isMenuOpen={isMenuOpen}
+      >
         <div>
-          <aside>
+          <aside className={`${isMenuOpen && 'open'}`}>
             <ChannelList
               channels={channels}
               activeChannel={channel}
@@ -125,18 +141,37 @@ export default class Index extends Component {
               display: flex;
               flex: 1;
             }
+
             aside {
-              flex: 1;
-              max-width: 400px;
               border-right: 1px solid #EEEBF3;
-              padding: 0 0 0 80px;
-              overflow: auto;                     
+              padding: 0 0 0 50px;
+              overflow: auto;
+              position: absolute;
+              top: 0;
+              bottom: 0;
+              width: 100%;
+              background: #fff;
+              z-index: 10;
+              transform: translate3d(-100%,0,0);
+              transition: transform .4s ease;
             }
+
+            aside.open {
+              transform: translate3d(0,0,0);
+            }
+
             @media screen and (min-width: 800px) {
               aside {
+                position: relative;
+                top: auto;
+                bottom: auto;
+                transform: none;
+                flex: 1;
+                max-width: 400px;
                 padding: 0 0 0 130px;              
               }
             }
+
             main {
               flex: 2;
               display flex;
