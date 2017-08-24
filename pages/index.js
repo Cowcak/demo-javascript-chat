@@ -25,12 +25,9 @@ export default class Index extends Component {
       channels: [],
       messages: [],
       text: '',
-<<<<<<< HEAD
       signing: true,
       signed: false,
-=======
       isMenuOpen: false,
->>>>>>> master
     }
   }
 
