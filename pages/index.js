@@ -34,7 +34,7 @@ export default class Index extends Component {
     )
     this.messages = subscribeMessages(
       channel,
-      messages => this.setState({ messages }),
+      messages => this.setState({ messages, loading: false }),
       err => console.error(err)
     )
   }
@@ -49,6 +49,7 @@ export default class Index extends Component {
 
     if (this.messages) {
       this.messages.unsubscribe()
+      this.setState({ loading: true })
     }
 
     this.messages = subscribeMessages(
@@ -106,7 +107,7 @@ export default class Index extends Component {
             <AddChannel onSubmit={this.createChannel} />
           </aside>
           <main>
-            <MessageList messages={messages} />
+            <MessageList messages={messages} loading={loading} />
             <Input
               placeholder="Type a message..."
               onChange={this.handleInputChange}
