@@ -146,6 +146,7 @@ export default class Index extends Component {
               border-right: 1px solid #EEEBF3;
               padding: 0 0 0 50px;
               overflow: auto;
+              -webkit-overflow-scrolling: touch;
               position: absolute;
               top: 0;
               bottom: 0;

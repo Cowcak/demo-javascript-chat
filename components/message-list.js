@@ -47,6 +47,7 @@ export default class MessageList extends Component {
               flex: 1;
               padding: 20px 30px;
               overflow-y: scroll;
+              -webkit-overflow-scrolling: touch;
               position: relative;
             }
 
