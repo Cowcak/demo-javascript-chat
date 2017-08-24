@@ -2,13 +2,15 @@ import React, { Component } from 'react'
 
 import Page from '../components/page'
 import Header from '../components/header'
-import Loader from '../components/loader'
 
+import Loader from '../components/loader'
 import Input from '../components/input'
 import ChannelList from '../components/channel-list'
 import MessageList from '../components/message-list'
 import AddChannel from '../components/add-channel'
+import WelcomePage from '../components/welcome'
 
+import { initClient } from '../lib/rapid'
 import subscribeChannels from '../lib/subscribe-channels'
 import subscribeMessages from '../lib/subscribe-messages'
 import sendMessage from '../lib/send-message'
@@ -22,12 +24,33 @@ export default class Index extends Component {
       channel: 'general',
       channels: [],
       messages: [],
-      text: ''
+      text: '',
+      signing: true,
+      signed: false,
     }
   }
 
   componentDidMount() {
+    const apiKey = localStorage.getItem('apiKey')
+
+    if (apiKey) {
+      this.setState({ signed: true })
+      this.initSubscriptions()
+    }
+
+    this.setState({ signing: false })
+  }
+
+  componentWillUnmount() {
+    this.channels && this.channels.unsubscribe()
+    this.messages && this.messages.unsubscribe()
+  }
+
+  initSubscriptions() {
     const { channel } = this.state
+
+    initClient()
+
     this.channels = subscribeChannels(
       channels => this.setState({ channels }),
       err => console.error('channels subscribe error', err)
@@ -39,9 +62,12 @@ export default class Index extends Component {
     )
   }
 
-  componentWillUnmount() {
-    this.channels && this.channels.unsubscribe()
-    this.messages && this.messages.unsubscribe()
+  handleApiKeySubmit = async apiKey => {
+    localStorage.setItem('apiKey', apiKey)
+
+    this.initSubscriptions()
+
+    this.setState({ signed: true })
   }
 
   handleChannelClick = channel => {
@@ -49,6 +75,7 @@ export default class Index extends Component {
 
     if (this.messages) {
       this.messages.unsubscribe()
+      this.setState({ loading: true })
     }
 
     this.messages = subscribeMessages(
@@ -93,7 +120,24 @@ export default class Index extends Component {
   }
 
   render() {
-    const { channels, channel, messages, text, loading } = this.state
+    const {
+      channels,
+      channel,
+      messages,
+      text,
+      loading,
+      signing,
+      signed,
+    } = this.state
+
+    if (signing) {
+      return <div />
+    }
+
+    if (!signed) {
+      return <WelcomePage onSubmit={this.handleApiKeySubmit} />
+    }
+
     return (
       <Page heading={`# ${channel}`}>
         <div>
@@ -126,7 +170,8 @@ export default class Index extends Component {
               max-width: 400px;
               border-right: 1px solid #EEEBF3;
               padding: 0 0 0 80px;
-              overflow: auto;                     
+              overflow: auto;
+              position: relative;                  
             }
             @media screen and (min-width: 800px) {
               aside {
