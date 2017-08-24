@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 
+import Loader from './loader'
 import Message from './message'
 
 export default class MessageList extends Component {
@@ -9,17 +10,44 @@ export default class MessageList extends Component {
     }
   }
 
+  renderMessages() {
+    const { messages, loading } = this.props
+
+    if (loading) {
+      return <Loader />
+    }
+
+    if (!messages.length) {
+      return (
+        <span>
+          No messages yet{' '}
+          <style jsx>
+            {`
+              span {
+                display: block;
+                padding: 35px 0;
+              }
+            `}
+          </style>
+        </span>
+      )
+    }
+
+    return messages.map(message => <Message key={message.id} {...message} />)
+  }
+
   render() {
-    const { messages } = this.props
+    const { messages, loading } = this.props
     return (
       <div ref={ref => (this.view = ref)}>
-        {messages.map(message => <Message key={message.id} {...message} />)}
+        {this.renderMessages()}
         <style jsx>
           {`
             div {
               flex: 1;
               padding: 20px 60px;
               overflow-y: scroll;
+              position: relative;
             }
           `}
         </style>

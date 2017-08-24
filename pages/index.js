@@ -34,8 +34,7 @@ export default class Index extends Component {
     const apiKey = localStorage.getItem('apiKey')
 
     if (apiKey) {
-      this.setState({ signed: true })
-      this.initSubscriptions()
+      this.initRapidClient(apiKey)
     }
 
     this.setState({ signing: false })
@@ -46,10 +45,21 @@ export default class Index extends Component {
     this.messages && this.messages.unsubscribe()
   }
 
+  async initRapidClient(apiKey) {
+    try {
+      await initClient(apiKey)
+      this.setState({ signed: true })
+      this.initSubscriptions()
+    } catch (error) {
+      console.error(error)
+      alert(
+        'It seems the API key is invalid. Try to create a new project within your dashboard and use a new API key. If problem still occurs, please reach us at info@rapid.io.'
+      )
+    }
+  }
+
   initSubscriptions() {
     const { channel } = this.state
-
-    initClient()
 
     this.channels = subscribeChannels(
       channels => this.setState({ channels }),
@@ -57,17 +67,13 @@ export default class Index extends Component {
     )
     this.messages = subscribeMessages(
       channel,
-      messages => this.setState({ messages }),
+      messages => this.setState({ messages, loading: false }),
       err => console.error(err)
     )
   }
 
-  handleApiKeySubmit = async apiKey => {
-    localStorage.setItem('apiKey', apiKey)
-
-    this.initSubscriptions()
-
-    this.setState({ signed: true })
+  handleApiKeySubmit = apiKey => {
+    this.initRapidClient(apiKey)
   }
 
   handleChannelClick = channel => {
@@ -103,7 +109,10 @@ export default class Index extends Component {
       return
     }
 
-    createChannel(name, cb)
+    createChannel(name, () => {
+      cb()
+      this.handleChannelClick(name)
+    })
   }
 
   async sendMessage() {
@@ -150,7 +159,7 @@ export default class Index extends Component {
             <AddChannel onSubmit={this.createChannel} />
           </aside>
           <main>
-            <MessageList messages={messages} />
+            <MessageList messages={messages} loading={loading} />
             <Input
               placeholder="Type a message..."
               onChange={this.handleInputChange}

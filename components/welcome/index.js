@@ -40,7 +40,7 @@ export default class WelcomePage extends Component {
           <div className="wrap">
             <Logo />
             <h1>Chat Demo App</h1>
-            <p>For start using this demo app you need to fill in your API key for Demo Chat Project.</p>
+            <p>For launching this demo app you need to fill in your API key for Demo Chat Project.</p>
             <form onSubmit={this.handleSubmit}>
               <Input
                 placeholder="API key"

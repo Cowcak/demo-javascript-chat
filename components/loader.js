@@ -32,6 +32,7 @@ export default () =>
       {`
         div {
           position: absolute;
+          left: 0;
           height: 100%;
           width: 100%;
           display: flex;
