@@ -188,11 +188,6 @@ export default class Index extends Component {
 
             aside {
               border-right: 1px solid #EEEBF3;
-<<<<<<< HEAD
-              padding: 0 0 0 80px;
-              overflow: auto;
-              position: relative;                  
-=======
               padding: 0 0 0 50px;
               overflow: auto;
               position: absolute;
@@ -203,7 +198,6 @@ export default class Index extends Component {
               z-index: 10;
               transform: translate3d(-100%,0,0);
               transition: transform .4s ease;
->>>>>>> master
             }
 
             aside.open {
