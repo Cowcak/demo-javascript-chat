@@ -7,10 +7,12 @@ import Loader from '../components/loader'
 import Input from '../components/input'
 import ChannelList from '../components/channel-list'
 import MessageList from '../components/message-list'
+import AddChannel from '../components/add-channel'
 
 import subscribeChannels from '../lib/subscribe-channels'
 import subscribeMessages from '../lib/subscribe-messages'
 import sendMessage from '../lib/send-message'
+import createChannel from '../lib/create-channel'
 
 export default class Index extends Component {
   constructor(props) {
@@ -66,6 +68,17 @@ export default class Index extends Component {
     }
   }
 
+  createChannel = (name, cb) => {
+    const regex = /^[0-9a-zA-Z_-]+$/
+
+    if (!regex.test(name) || name.length < 3) {
+      alert('Invalid channel name')
+      return
+    }
+
+    createChannel(name, cb)
+  }
+
   async sendMessage() {
     const { channel, text } = this.state
     if (text === '') {
@@ -90,6 +103,7 @@ export default class Index extends Component {
               activeChannel={channel}
               onClick={this.handleChannelClick}
             />
+            <AddChannel onSubmit={this.createChannel} />
           </aside>
           <main>
             <MessageList messages={messages} />
@@ -111,7 +125,8 @@ export default class Index extends Component {
               flex: 1;
               max-width: 400px;
               border-right: 1px solid #EEEBF3;
-              padding: 0 0 0 80px;                            
+              padding: 0 0 0 80px;
+              overflow: auto;                     
             }
             @media screen and (min-width: 800px) {
               aside {
