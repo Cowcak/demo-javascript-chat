@@ -17,13 +17,7 @@ Clone this repository or download it as a [ZIP](https://github.com/rapid-io/demo
 
 ```
  curl https://codeload.github.com/rapid-io/demo-javascript-chat/tar.gz/master | tar -xz
- cd demo-javascript-chat-master
-```
-
-Visit [http://www.rapid.io](http://www.rapid.io) and create a FREE account. You'll be redirected into Rapid.io Dashboard, where you can find a demo project. Within a Setting tab, you'll find an API key. Copy the key into clipboard, find `lib/rapid.js` file and paste the key to the following constant.
-
-```js
- const API_KEY = ''
+ cd demo-javascript-chat-live-demo
 ```
 
 Install it and run.
@@ -32,6 +26,18 @@ Install it and run.
  yarn
  yarn run dev
 ```
+
+The app will be running on `localhost:3000`. In the first step, you'll be asked for `API key`. 
+
+1. If you already have an account at [http://www.rapid.io](http://www.rapid.io), you can go to [dashboard](http://dashboard.rapid.io) and create a project for getting the `API key`.
+
+2. Otherwise, visit [http://www.rapid.io](http://www.rapid.io) and create a FREE account. You'll be redirected into Rapid.io Dashboard, where you can find a demo project. Within a Setting tab, you'll find an API key.
+
+Then, you need to paste your `API key` into the welcome form and you're ready to launch the demo chat app.
+
+<p align="center">
+  <img alt="App - Launch app with an API key" src="./static/app-welcome-screenshot.png" />
+</p>
 
 ## Dashboard
 
