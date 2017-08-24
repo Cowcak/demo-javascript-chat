@@ -17,7 +17,7 @@ Clone this repository or download it as a [ZIP](https://github.com/rapid-io/demo
 
 ```
  curl https://codeload.github.com/rapid-io/demo-javascript-chat/tar.gz/master | tar -xz
- cd demo-javascript-chat
+ cd demo-javascript-chat-master
 ```
 
 Visit [http://www.rapid.io](http://www.rapid.io) and create a FREE account. You'll be redirected into Rapid.io Dashboard, where you can find a demo project. Within a Setting tab, you'll find an API key. Copy the key into clipboard, find `lib/rapid.js` file and paste the key to the following constant.
